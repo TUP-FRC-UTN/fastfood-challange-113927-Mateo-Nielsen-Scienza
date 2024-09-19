@@ -1,0 +1,47 @@
+
+
+<div>
+
+  <h3>Pedidos Ingresados</h3>
+  <pre>{{ pedidos | json }}</pre>
+  
+<app-point-sell 
+(nuevoPedido)="agregarPedido($event)"
+></app-point-sell>
+
+<app-cocina
+[pedidos]="pedidos"
+(pedidoCocinado)="marcarCocinado($event)"
+></app-cocina>
+
+<div>
+
+
+  
+  <h3>Pedidos en coccion</h3>
+  <div>
+    @for (pedido of pedidosCocinados; track $index) {
+      <p>{{pedido.number}} - {{pedido.name}} - {{pedido.description}}</p>
+      <button (click)="finalizarCoccion(pedido)"> Pedido Terminado!</button>
+    }
+  </div>
+</div>
+
+<div>
+  <div>
+    <h3>Pedidos Listos para Entregar</h3>
+    <div>
+      @for (pedido of pedidosParaEntregar; track $index) {
+        <p>{{pedido.number}} - {{pedido.name}} - {{pedido.description}}</p>
+        <button (click)="entregarPedido(pedido)">Entregar!</button>
+      }
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</div>
+

@@ -1,0 +1,11 @@
+
+
+<h3>Pendiente de Cocinar</h3>
+<br>
+@if (pedidos.length === 0) {
+    <div>No hay pedidos pendientes.</div>
+}
+@for (pedido of pedidos; track $index) {
+    <p>{{pedido.number}} - {{pedido.description}} <button (click)="cocinar(pedido.number)">Cocinar</button> </p> 
+}
+<br>
